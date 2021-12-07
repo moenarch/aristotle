@@ -1,4 +1,6 @@
 # Summary
 
 [Works](./works.md)
-- [Categories](./src/works/categories/book/index.html)
+- [metaphysics](https://moenarch.github.io/aristotle-metaphysics)
+
+

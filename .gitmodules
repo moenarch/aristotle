@@ -1,9 +1,6 @@
-[submodule "src/works/categories"]
-	path = src/works/categories
-	url = https://github.com/moenarch/aristotle-categories.git
-	branch = main
-
+[submodule "aristotle-metaphysics"]
+	path = src/works/aristotle-metaphysics
+	url = https://github.com/moenarch/aristotle-metaphysics
 [submodule "src/works/metaphysics"]
-	path = src/works/categories
-	url = https://github.com/moenarch/aristotle-metaphysics.git
-	branch = main
+	path = src/works/metaphysics
+	url = https://github.com/moenarch/aristotle-metaphysics

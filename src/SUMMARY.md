@@ -1,6 +1,9 @@
 # Summary
 
-[Works](./works.md)
-- [metaphysics](https://moenarch.github.io/aristotle-metaphysics)
+## Works
 
+[metaphysics](./works/metaphysics/src/SUMMARY.md)
 
+---
+
+[Substance](./concepts/Substance.md)

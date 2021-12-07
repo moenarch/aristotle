@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Aristotle</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="works/metaphysics/src/SUMMARY.html">metaphysics</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="concepts/Substance.html">Substance</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Aristotle</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="summary"><a class="header" href="#summary">SUMMARY</a></h1>
+<p><a href="works/metaphysics/src/Introduction.html">Introduction</a></p>
+<hr />
+<ul>
+<li><a href="works/metaphysics/src/Book1.html">Book 1</a>
+<ul>
+<li><a href="works/metaphysics/src/Book1/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book1/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book1/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book1/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book1/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book1/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book1/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book1/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book1/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book1/Part10.html">Part 10</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book2.html">Book 2</a>
+<ul>
+<li><a href="works/metaphysics/src/Book2/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book2/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book2/Part3.html">Part 3</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book3.html">Book 3</a>
+<ul>
+<li><a href="works/metaphysics/src/Book3/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book3/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book3/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book3/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book3/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book3/Part6.html">Part 6</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book4.html">Book 4</a>
+<ul>
+<li><a href="works/metaphysics/src/Book4/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book4/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book4/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book4/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book4/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book4/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book4/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book4/Part8.html">Part 8</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book5.html">Book 5</a>
+<ul>
+<li><a href="works/metaphysics/src/Book5/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book5/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book5/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book5/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book5/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book5/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book5/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book5/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book5/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book5/Part10.html">Part 10</a></li>
+<li><a href="works/metaphysics/src/Book5/Part11.html">Part 11</a></li>
+<li><a href="works/metaphysics/src/Book5/Part12.html">Part 12</a></li>
+<li><a href="works/metaphysics/src/Book5/Part13.html">Part 13</a></li>
+<li><a href="works/metaphysics/src/Book5/Part14.html">Part 14</a></li>
+<li><a href="works/metaphysics/src/Book5/Part15.html">Part 15</a></li>
+<li><a href="works/metaphysics/src/Book5/Part16.html">Part 16</a></li>
+<li><a href="works/metaphysics/src/Book5/Part17.html">Part 17</a></li>
+<li><a href="works/metaphysics/src/Book5/Part18.html">Part 18</a></li>
+<li><a href="works/metaphysics/src/Book5/Part19.html">Part 19</a></li>
+<li><a href="works/metaphysics/src/Book5/Part20.html">Part 20</a></li>
+<li><a href="works/metaphysics/src/Book5/Part21.html">Part 21</a></li>
+<li><a href="works/metaphysics/src/Book5/Part22.html">Part 22</a></li>
+<li><a href="works/metaphysics/src/Book5/Part23.html">Part 23</a></li>
+<li><a href="works/metaphysics/src/Book5/Part24.html">Part 24</a></li>
+<li><a href="works/metaphysics/src/Book5/Part25.html">Part 25</a></li>
+<li><a href="works/metaphysics/src/Book5/Part26.html">Part 26</a></li>
+<li><a href="works/metaphysics/src/Book5/Part27.html">Part 27</a></li>
+<li><a href="works/metaphysics/src/Book5/Part28.html">Part 28</a></li>
+<li><a href="works/metaphysics/src/Book5/Part29.html">Part 29</a></li>
+<li><a href="works/metaphysics/src/Book5/Part30.html">Part 30</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book6.html">Book 6</a>
+<ul>
+<li><a href="works/metaphysics/src/Book6/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book6/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book6/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book6/Part4.html">Part 4</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book7.html">Book 7</a>
+<ul>
+<li><a href="works/metaphysics/src/Book7/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book7/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book7/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book7/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book7/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book7/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book7/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book7/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book7/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book7/Part10.html">Part 10</a></li>
+<li><a href="works/metaphysics/src/Book7/Part11.html">Part 11</a></li>
+<li><a href="works/metaphysics/src/Book7/Part12.html">Part 12</a></li>
+<li><a href="works/metaphysics/src/Book7/Part13.html">Part 13</a></li>
+<li><a href="works/metaphysics/src/Book7/Part14.html">Part 14</a></li>
+<li><a href="works/metaphysics/src/Book7/Part15.html">Part 15</a></li>
+<li><a href="works/metaphysics/src/Book7/Part16.html">Part 16</a></li>
+<li><a href="works/metaphysics/src/Book7/Part17.html">Part 17</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book8.html">Book 8</a>
+<ul>
+<li><a href="works/metaphysics/src/Book8/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book8/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book8/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book8/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book8/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book8/Part6.html">Part 6</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book9.html">Book 9</a>
+<ul>
+<li><a href="works/metaphysics/src/Book9/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book9/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book9/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book9/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book9/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book9/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book9/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book9/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book9/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book9/Part10.html">Part 10</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book10.html">Book 10</a>
+<ul>
+<li><a href="works/metaphysics/src/Book10/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book10/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book10/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book10/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book10/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book10/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book10/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book10/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book10/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book10/Part10.html">Part 10</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book11.html">Book 11</a>
+<ul>
+<li><a href="works/metaphysics/src/Book11/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book11/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book11/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book11/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book11/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book11/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book11/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book11/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book11/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book11/Part10.html">Part 10</a></li>
+<li><a href="works/metaphysics/src/Book11/Part11.html">Part 11</a></li>
+<li><a href="works/metaphysics/src/Book11/Part12.html">Part 12</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book12.html">Book 12</a>
+<ul>
+<li><a href="works/metaphysics/src/Book12/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book12/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book12/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book12/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book12/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book12/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book12/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book12/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book12/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book12/Part10.html">Part 10</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book13.html">Book 13</a>
+<ul>
+<li><a href="works/metaphysics/src/Book13/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book13/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book13/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book13/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book13/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book13/Part6.html">Part 6</a></li>
+<li><a href="works/metaphysics/src/Book13/Part7.html">Part 7</a></li>
+<li><a href="works/metaphysics/src/Book13/Part8.html">Part 8</a></li>
+<li><a href="works/metaphysics/src/Book13/Part9.html">Part 9</a></li>
+<li><a href="works/metaphysics/src/Book13/Part10.html">Part 10</a></li>
+</ul>
+</li>
+<li><a href="works/metaphysics/src/Book14.html">Book 14</a>
+<ul>
+<li><a href="works/metaphysics/src/Book14/Part1.html">Part 1</a></li>
+<li><a href="works/metaphysics/src/Book14/Part2.html">Part 2</a></li>
+<li><a href="works/metaphysics/src/Book14/Part3.html">Part 3</a></li>
+<li><a href="works/metaphysics/src/Book14/Part4.html">Part 4</a></li>
+<li><a href="works/metaphysics/src/Book14/Part5.html">Part 5</a></li>
+<li><a href="works/metaphysics/src/Book14/Part6.html">Part 6</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="substance"><a class="header" href="#substance">Substance</a></h1>
+<p>Aristotle talks about <strong>substance</strong> in various places, for example:</p>
+<blockquote>
+<p>{{#include ..\works\metaphysics\src\Book7\Part3.md:3}}</p>
+</blockquote>
+<p>in <a href="https://moenarch.github.io/aristotle-metaphysics/Book7/Part3.html">Metaphysics, Book 7, Part 3</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
